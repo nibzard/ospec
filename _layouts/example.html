@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+{% include breadcrumbs.html %}
+
+<article class="example">
+  <header class="example-header">
+    <h1 class="example-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="example-description">{{ page.description }}</p>
+    {% endif %}
+    
+    <div class="example-meta">
+      {% if page.outcome_type %}
+        <span class="example-type">{{ page.outcome_type }}</span>
+      {% endif %}
+      {% if page.stack %}
+        <div class="example-stack">
+          {% for tech in page.stack %}
+            <span class="stack-item">{{ tech[1] }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if page.github %}
+        <a href="{{ page.github }}" class="example-github" target="_blank">View on GitHub</a>
+      {% endif %}
+    </div>
+  </header>
+  
+  <div class="example-content">
+    {{ content }}
+  </div>
+</article>

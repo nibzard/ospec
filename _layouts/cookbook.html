@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+{% include breadcrumbs.html %}
+
+<article class="cookbook">
+  <header class="cookbook-header">
+    <h1 class="cookbook-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="cookbook-description">{{ page.description }}</p>
+    {% endif %}
+    {% if page.tags %}
+      <div class="cookbook-tags">
+        {% for tag in page.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+  
+  <div class="cookbook-content">
+    {{ content }}
+  </div>
+</article>

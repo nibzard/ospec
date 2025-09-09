@@ -1,0 +1,525 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ospec.dev/schemas/v1.0/ospec.json",
+  "title": "OSpec v1.0",
+  "description": "JSON Schema for OSpec (Outcome Specification) v1.0 format",
+  "type": "object",
+  "required": ["ospec_version", "id", "name", "description", "outcome_type", "acceptance"],
+  "properties": {
+    "ospec_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the OSpec format (e.g., '1.0.0')"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Unique identifier in kebab-case format"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100,
+      "description": "Human-readable project name"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "Detailed project description"
+    },
+    "outcome_type": {
+      "type": "string",
+      "enum": [
+        "web-app", 
+        "api", 
+        "cli", 
+        "game", 
+        "library", 
+        "ml-pipeline", 
+        "mobile-app", 
+        "desktop-app", 
+        "infrastructure", 
+        "documentation"
+      ],
+      "description": "Type of outcome to build"
+    },
+    "acceptance": {
+      "type": "object",
+      "description": "Acceptance criteria for the project",
+      "minProperties": 1,
+      "properties": {
+        "http_endpoints": {
+          "type": "array",
+          "description": "HTTP endpoints that must be available and working",
+          "items": {
+            "type": "object",
+            "required": ["path", "status"],
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^/.*",
+                "description": "URL path (must start with /)"
+              },
+              "status": {
+                "type": "integer",
+                "minimum": 100,
+                "maximum": 599,
+                "description": "Expected HTTP status code"
+              },
+              "method": {
+                "type": "string",
+                "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+                "default": "GET",
+                "description": "HTTP method"
+              },
+              "response_contains": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Strings that must be present in response"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "ux_flows": {
+          "type": "array",
+          "description": "User experience flows that must be supported",
+          "items": {
+            "type": "object",
+            "required": ["name", "steps"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Name of the UX flow"
+              },
+              "steps": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": "Ordered list of steps in the flow"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "tests": {
+          "type": "array",
+          "description": "Test files and requirements",
+          "items": {
+            "type": "object",
+            "required": ["file"],
+            "properties": {
+              "file": {
+                "type": "string",
+                "pattern": "^.+\\.(test|spec)\\.[a-zA-Z0-9]+$",
+                "description": "Path to test file"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["unit", "integration", "e2e", "performance", "security"],
+                "description": "Type of test"
+              },
+              "coverage_threshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Minimum code coverage required (0.0 to 1.0)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "performance": {
+          "type": "object",
+          "description": "Performance requirements",
+          "properties": {
+            "response_time_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Maximum response time in milliseconds"
+            },
+            "throughput_rps": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Minimum throughput in requests per second"
+            },
+            "memory_mb": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Maximum memory usage in megabytes"
+            },
+            "cpu_percent": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Maximum CPU usage percentage"
+            },
+            "disk_space_mb": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Maximum disk space usage in megabytes"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "stack": {
+      "type": "object",
+      "description": "Technology stack components (legacy field, use technology_stack instead)",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "technology_stack": {
+      "type": "object",
+      "description": "Modern technology stack specification",
+      "properties": {
+        "meta_framework": {
+          "type": "string",
+          "description": "Primary framework (e.g., Next.js@15, SvelteKit@2, Remix@2)"
+        },
+        "ui_library": {
+          "type": "string", 
+          "description": "UI library (e.g., React@18, Vue@3, Svelte@5)"
+        },
+        "styling": {
+          "type": "string",
+          "description": "Styling solution (e.g., TailwindCSS@4, styled-components)"
+        },
+        "database": {
+          "type": "string",
+          "description": "Database technology (e.g., Supabase, PlanetScale, PostgreSQL)"
+        },
+        "runtime": {
+          "type": "string",
+          "description": "Runtime environment (e.g., Node.js@20, Bun@1.1, Deno@2)"
+        },
+        "package_manager": {
+          "type": "string",
+          "enum": ["npm", "yarn", "pnpm", "bun"],
+          "description": "Package manager preference"
+        },
+        "deployment": {
+          "type": "string",
+          "description": "Deployment platform (e.g., Vercel, Railway, Cloudflare Pages)"
+        }
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "agents": {
+      "type": "object",
+      "description": "AI coding agent specifications and workflow",
+      "properties": {
+        "primary": {
+          "type": "string",
+          "enum": ["claude-code", "cursor", "github-copilot", "sourcegraph-cody", "tabnine"],
+          "description": "Primary development agent"
+        },
+        "secondary": {
+          "type": "object",
+          "description": "Specialized agents for specific tasks",
+          "properties": {
+            "deployment": {
+              "type": "string",
+              "description": "Agent specialized for deployment and CI/CD"
+            },
+            "testing": {
+              "type": "string", 
+              "description": "Agent specialized for test creation and quality assurance"
+            },
+            "security": {
+              "type": "string",
+              "description": "Agent specialized for security reviews and audits"
+            },
+            "performance": {
+              "type": "string",
+              "description": "Agent specialized for performance optimization"
+            }
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "preferences": {
+          "type": "object",
+          "description": "Agent-specific preferences and optimizations",
+          "additionalProperties": {
+            "type": ["string", "boolean", "object"]
+          }
+        }
+      }
+    },
+    "sub_agents": {
+      "type": "array",
+      "description": "Sub-agent definitions that will be created in .claude/agents/",
+      "items": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "description": "Sub-agent identifier in kebab-case"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Sub-agent purpose and capabilities"
+          },
+          "focus": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Areas of specialization for this sub-agent"
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Allowed tools for this sub-agent"
+          },
+          "model": {
+            "type": "string",
+            "enum": ["haiku", "sonnet", "opus"],
+            "description": "Claude model to use for this sub-agent"
+          },
+          "system_prompt": {
+            "type": "string",
+            "description": "Custom system prompt for the sub-agent"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "guardrails": {
+      "type": "object",
+      "description": "Development and deployment guardrails",
+      "properties": {
+        "tests_required": {
+          "type": "boolean",
+          "description": "Whether tests are required"
+        },
+        "min_test_coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Minimum test coverage threshold (0.0 to 1.0)"
+        },
+        "lint": {
+          "type": "boolean",
+          "description": "Whether linting is required"
+        },
+        "type_check": {
+          "type": "boolean",
+          "description": "Whether type checking is required"
+        },
+        "dependency_check": {
+          "type": "boolean",
+          "description": "Whether dependency vulnerability checking is required"
+        },
+        "security_scan": {
+          "type": "boolean",
+          "description": "Whether security scanning is required"
+        },
+        "license_whitelist": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Allowed software licenses"
+        },
+        "max_pr_size": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum lines changed per pull request"
+        },
+        "human_approval_required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Areas requiring human approval"
+        }
+      },
+      "additionalProperties": false
+    },
+    "prompts": {
+      "type": "object",
+      "description": "Paths to prompt template files",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^.+\\.(md|txt)$"
+      }
+    },
+    "scripts": {
+      "type": "object",
+      "description": "Automation scripts - either file paths or embedded script content",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string",
+            "pattern": "^.+\\.(sh|py|js|ts|rb|pl)$",
+            "description": "Path to script file"
+          },
+          {
+            "type": "string",
+            "pattern": "^#!/",
+            "description": "Embedded script content (must start with shebang)"
+          }
+        ]
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "description": "Project task breakdown",
+      "items": {
+        "type": "object",
+        "required": ["id", "title"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-_]*$",
+            "description": "Unique task identifier"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100,
+            "description": "Task title"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "description": "Detailed task description"
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of task IDs this task depends on"
+          },
+          "estimated_hours": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Estimated effort in hours"
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": ["low", "medium", "high"],
+            "description": "Risk assessment for the task"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Project metadata",
+      "properties": {
+        "maintainers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Maintainer name"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "description": "Maintainer email address"
+              },
+              "github": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9]([a-zA-Z0-9-]){0,38}$",
+                "description": "GitHub username"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "license": {
+          "type": "string",
+          "description": "Software license identifier"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-.+)?$",
+          "description": "Project version (semantic versioning)"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "description": "Project tags for categorization"
+        },
+        "estimated_effort": {
+          "type": "string",
+          "description": "Human-readable effort estimate"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "additionalProperties": false
+    },
+    "secrets": {
+      "type": "object",
+      "description": "Secret management configuration",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "description": "Secret provider identifier (e.g., 'vercel://env', 'aws://secrets-manager')"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "description": "Required environment variables/secrets"
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "description": "Optional environment variables/secrets"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

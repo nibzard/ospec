@@ -1,0 +1,225 @@
+#!/usr/bin/env ruby
+
+# Standalone OSpec validation script
+# Usage: ./ospec-validate [file-or-directory] [options]
+
+require 'optparse'
+require 'pathname'
+
+# Add the current script directory to load path for require_relative
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+
+begin
+  require_relative 'validate_ospec'
+rescue LoadError => e
+  puts "Error: Could not load validation library: #{e.message}"
+  puts "Make sure the validate_ospec.rb file is in the same directory."
+  exit 1
+end
+
+class OSpecCLI
+  VERSION = '1.0.0'
+  
+  def initialize
+    @options = {
+      pattern: '**/*.{ospec,ospec.yml,ospec.yaml}',
+      verbose: false,
+      strict: false,
+      format: 'human'
+    }
+    
+    @option_parser = create_option_parser
+  end
+  
+  def run(args = ARGV)
+    begin
+      remaining_args = @option_parser.parse(args)
+      target = remaining_args.first || '.'
+      
+      validator = OSpecValidator.new
+      
+      if File.file?(target)
+        validate_single_file(validator, target)
+      elsif File.directory?(target)
+        validate_directory(validator, target)
+      else
+        puts "Error: '#{target}' is not a valid file or directory"
+        exit 1
+      end
+      
+    rescue OptionParser::InvalidOption => e
+      puts "Error: #{e.message}"
+      puts @option_parser.help
+      exit 1
+    rescue StandardError => e
+      puts "Error: #{e.message}"
+      exit 1
+    end
+  end
+  
+  private
+  
+  def create_option_parser
+    OptionParser.new do |opts|
+      opts.banner = <<~BANNER
+        OSpec Validator v#{VERSION}
+        
+        Usage: #{File.basename($0)} [FILE|DIRECTORY] [options]
+        
+        Validates OSpec files against the JSON Schema specification.
+        
+        Examples:
+          #{File.basename($0)} my-project.ospec.yml
+          #{File.basename($0)} ./examples --pattern "*.ospec.yml"
+          #{File.basename($0)} . --verbose --strict
+          
+        Options:
+      BANNER
+      
+      opts.on('-p', '--pattern PATTERN',
+              'File pattern for directory validation',
+              "Default: #{@options[:pattern]}") do |pattern|
+        @options[:pattern] = pattern
+      end
+      
+      opts.on('-v', '--verbose', 'Enable verbose output') do
+        @options[:verbose] = true
+      end
+      
+      opts.on('-s', '--strict', 'Treat warnings as errors') do
+        @options[:strict] = true
+      end
+      
+      opts.on('-f', '--format FORMAT', ['human', 'json', 'junit'],
+              'Output format (human, json, junit)',
+              'Default: human') do |format|
+        @options[:format] = format
+      end
+      
+      opts.on('-q', '--quiet', 'Suppress non-error output') do
+        @options[:quiet] = true
+      end
+      
+      opts.on('--list-schemas', 'List available schema versions') do
+        list_schemas
+        exit 0
+      end
+      
+      opts.on('--schema-version VERSION', 'Use specific schema version') do |version|
+        @options[:schema_version] = version
+      end
+      
+      opts.on('-h', '--help', 'Show this help message') do
+        puts opts
+        exit 0
+      end
+      
+      opts.on('--version', 'Show version') do
+        puts "OSpec Validator v#{VERSION}"
+        exit 0
+      end
+    end
+  end
+  
+  def validate_single_file(validator, file_path)
+    puts "Validating: #{file_path}" unless @options[:quiet]
+    
+    success = validator.validate_file(file_path)
+    
+    if success
+      puts "✅ Valid" unless @options[:quiet]
+      exit 0
+    else
+      puts "❌ Invalid" unless @options[:quiet]
+      exit 1
+    end
+  end
+  
+  def validate_directory(validator, dir_path)
+    puts "Validating directory: #{dir_path}" unless @options[:quiet]
+    puts "Pattern: #{@options[:pattern]}" if @options[:verbose]
+    
+    files = Dir.glob(File.join(dir_path, @options[:pattern]))
+    
+    if files.empty?
+      puts "No OSpec files found matching pattern: #{@options[:pattern]}"
+      exit 0
+    end
+    
+    results = []
+    files.each do |file|
+      success = validator.validate_file(file)
+      results << { file: file, valid: success }
+    end
+    
+    valid_count = results.count { |r| r[:valid] }
+    total_count = results.length
+    
+    case @options[:format]
+    when 'json'
+      output_json_results(results)
+    when 'junit'
+      output_junit_results(results)
+    else
+      output_human_results(results, valid_count, total_count)
+    end
+    
+    exit(results.all? { |r| r[:valid] } ? 0 : 1)
+  end
+  
+  def output_human_results(results, valid_count, total_count)
+    return if @options[:quiet]
+    
+    puts "\n" + "="*50
+    if results.all? { |r| r[:valid] }
+      puts "✅ All #{total_count} OSpec files are valid!"
+    else
+      invalid_count = total_count - valid_count
+      puts "❌ #{invalid_count} of #{total_count} OSpec files are invalid"
+      
+      puts "\nInvalid files:"
+      results.select { |r| !r[:valid] }.each do |result|
+        puts "  - #{result[:file]}"
+      end
+    end
+  end
+  
+  def output_json_results(results)
+    output = {
+      total: results.length,
+      valid: results.count { |r| r[:valid] },
+      invalid: results.count { |r| !r[:valid] },
+      results: results
+    }
+    puts JSON.pretty_generate(output)
+  end
+  
+  def output_junit_results(results)
+    # Basic JUnit XML output for CI systems
+    puts '<?xml version="1.0" encoding="UTF-8"?>'
+    puts '<testsuite name="OSpec Validation">'
+    
+    results.each do |result|
+      if result[:valid]
+        puts "  <testcase name=\"#{result[:file]}\" />"
+      else
+        puts "  <testcase name=\"#{result[:file]}\">"
+        puts "    <failure message=\"Validation failed\">#{result[:file]} failed validation</failure>"
+        puts "  </testcase>"
+      end
+    end
+    
+    puts '</testsuite>'
+  end
+  
+  def list_schemas
+    puts "Available schema versions:"
+    puts "  - v1.0 (default)"
+  end
+end
+
+# Run the CLI if this script is executed directly
+if __FILE__ == $0
+  cli = OSpecCLI.new
+  cli.run(ARGV)
+end

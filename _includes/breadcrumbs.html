@@ -1,0 +1,32 @@
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <ol>
+    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+    
+    {% assign path_parts = page.url | split: '/' %}
+    {% assign built_path = '' %}
+    
+    {% for part in path_parts %}
+      {% unless part == '' %}
+        {% assign built_path = built_path | append: '/' | append: part %}
+        {% assign is_last = forloop.last %}
+        
+        {% if is_last %}
+          <li class="current" aria-current="page">{{ page.title }}</li>
+        {% else %}
+          {% comment %} Try to find the collection or section name {% endcomment %}
+          {% if part == 'specification' %}
+            <li><a href="/specification/">Specification</a></li>
+          {% elsif part == 'guides' %}
+            <li><a href="/guides/">Guides</a></li>
+          {% elsif part == 'examples' %}
+            <li><a href="/examples/">Examples</a></li>
+          {% elsif part == 'cookbook' %}
+            <li><a href="/cookbook/">Cookbook</a></li>
+          {% else %}
+            <li><a href="{{ built_path | append: '/' | relative_url }}">{{ part | capitalize }}</a></li>
+          {% endif %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+  </ol>
+</nav>

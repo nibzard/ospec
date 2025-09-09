@@ -1,0 +1,36 @@
+{
+  "name": "ospec-website",
+  "version": "1.0.0",
+  "description": "OSpec - Outcome-Driven AI Agent Frameworks website",
+  "scripts": {
+    "dev": "bundle exec jekyll serve --host 127.0.0.1 --port 4000 --livereload",
+    "build": "bundle exec jekyll build",
+    "clean": "bundle exec jekyll clean",
+    "test": "bundle exec jekyll build && bundle exec htmlproofer ./_site --disable-external",
+    "validate-ospec": "node scripts/validate-ospec.js",
+    "validate-ospec-file": "node scripts/validate-ospec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nibzard/ospec.git"
+  },
+  "keywords": [
+    "ai-agents",
+    "automation",
+    "specification",
+    "jekyll",
+    "documentation"
+  ],
+  "author": "OSpec Community",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "chalk": "^4.1.2",
+    "glob": "^10.3.10",
+    "yaml": "^2.3.4"
+  },
+  "dependencies": {
+    "playwright": "^1.55.0"
+  }
+}

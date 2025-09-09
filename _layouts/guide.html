@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+{% include breadcrumbs.html %}
+
+<article class="guide">
+  <header class="guide-header">
+    <h1 class="guide-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="guide-description">{{ page.description }}</p>
+    {% endif %}
+    {% if page.difficulty %}
+      <span class="guide-difficulty difficulty-{{ page.difficulty }}">{{ page.difficulty | capitalize }}</span>
+    {% endif %}
+    {% if page.time %}
+      <span class="guide-time">⏱️ {{ page.time }}</span>
+    {% endif %}
+  </header>
+  
+  <div class="guide-content">
+    {{ content }}
+  </div>
+</article>

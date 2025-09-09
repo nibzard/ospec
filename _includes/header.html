@@ -1,0 +1,29 @@
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container">
+    <div class="site-nav">
+      <a href="{{ '/' | relative_url }}" class="site-title">
+        <strong>OSpec</strong> <span class="version">v1.0</span>
+      </a>
+      
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        {% for item in site.navigation %}
+          <a href="{{ item.url | relative_url }}" 
+             class="nav-link {% if page.url contains item.url %}active{% endif %}"
+             {% if item.url contains 'github' %}target="_blank" rel="noopener"{% endif %}>
+            {{ item.title }}
+          </a>
+        {% endfor %}
+      </nav>
+      
+      <button class="mobile-menu-toggle" 
+              aria-label="Toggle navigation menu"
+              aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>

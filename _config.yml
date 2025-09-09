@@ -1,0 +1,143 @@
+# Site settings
+title: "OSpec"
+tagline: "Build Products That Deliver Outcomes"
+description: "Outcome-driven specifications for AI coding agents. Define what to build, not how to build it."
+url: "https://nibzard.github.io"
+baseurl: "/ospec"
+repository: "nibzard/ospec"
+lang: "en"
+timezone: "UTC"
+
+# Author
+author:
+  name: "OSpec Community"
+  email: "noreply@github.com"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: null  # Custom theme, not using minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-github-metadata
+  - jekyll-seo-tag
+  - jekyll-relative-links
+  - jekyll-include-cache
+  - jekyll-redirect-from
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - spec.md
+  - plan.md
+  - package.json
+  - package-lock.json
+  - README.md
+  - LICENSE
+  - .github/
+  - .gitignore
+  - scripts/
+  - _config_dev.yml
+
+# Include files
+include:
+  - _pages
+
+# Collections
+collections:
+  specification:
+    output: true
+    permalink: /:collection/:name/
+  guides:
+    output: true
+    permalink: /:collection/:name/
+  examples:
+    output: true
+    permalink: /:collection/:name/
+  cookbook:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "specification"
+    values:
+      layout: "spec"
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: "guide"
+  - scope:
+      path: ""
+      type: "examples"
+    values:
+      layout: "example"
+  - scope:
+      path: ""
+      type: "cookbook"
+    values:
+      layout: "cookbook"
+
+# Navigation
+navigation:
+  - title: "Specification"
+    url: "/specification/"
+  - title: "Guides"
+    url: "/guides/"
+  - title: "Examples"
+    url: "/examples/"
+  - title: "Cookbook"
+    url: "/cookbook/"
+  - title: "GitHub"
+    url: "https://github.com/nibzard/ospec"
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+  auto_ids: true
+  toc_levels: 2..3
+
+# Performance
+sass:
+  style: compressed
+
+# SEO
+twitter:
+  username: ospec
+  card: summary_large_image
+
+social:
+  name: OSpec Community
+  links:
+    - https://github.com/nibzard/ospec
+
+# Analytics (optional, add your tracking ID)
+# google_analytics: UA-XXXXXXXXX-X

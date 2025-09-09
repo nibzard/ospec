@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+{% include breadcrumbs.html %}
+
+<div class="spec-container">
+  <aside class="spec-sidebar">
+    <nav class="spec-toc" aria-label="Specification sections">
+      <h3>Specification</h3>
+      <ul>
+        {% assign specs = site.specification | sort: 'order' %}
+        {% for spec in specs %}
+          <li>
+            <a href="{{ spec.url | relative_url }}" 
+               {% if spec.url == page.url %}class="active" aria-current="page"{% endif %}>
+              {{ spec.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </aside>
+
+  <article class="specification">
+    <header class="spec-header">
+      <h1 class="spec-title">{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="spec-description">{{ page.description }}</p>
+      {% endif %}
+      {% if page.version %}
+        <span class="spec-version">Version {{ page.version }}</span>
+      {% endif %}
+    </header>
+  
+  <div class="spec-content">
+    {{ content }}
+  </div>
+  
+    <nav class="spec-nav">
+      {% assign specs = site.specification | sort: 'order' %}
+      {% assign prev_spec = null %}
+      {% assign next_spec = null %}
+      {% assign found_current = false %}
+      
+      {% for spec in specs %}
+        {% if found_current == true %}
+          {% assign next_spec = spec %}
+          {% break %}
+        {% endif %}
+        {% if spec.url == page.url %}
+          {% assign found_current = true %}
+        {% else %}
+          {% assign prev_spec = spec %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if prev_spec %}
+        <a href="{{ prev_spec.url }}" class="nav-prev">← {{ prev_spec.title }}</a>
+      {% endif %}
+      
+      {% if next_spec %}
+        <a href="{{ next_spec.url }}" class="nav-next">{{ next_spec.title }} →</a>
+      {% endif %}
+    </nav>
+  </article>
+</div>

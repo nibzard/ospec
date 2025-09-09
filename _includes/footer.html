@@ -1,0 +1,41 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>OSpec</h4>
+        <p>Outcome-Driven AI Agent Frameworks</p>
+        <p class="version">Version 1.0.0</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Documentation</h4>
+        <ul>
+          <li><a href="{{ '/specification/' | relative_url }}">Specification</a></li>
+          <li><a href="{{ '/guides/' | relative_url }}">Guides</a></li>
+          <li><a href="{{ '/examples/' | relative_url }}">Examples</a></li>
+          <li><a href="{{ '/cookbook/' | relative_url }}">Cookbook</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="{{ site.repository | prepend: 'https://github.com/' }}" target="_blank">GitHub</a></li>
+          <li><a href="{{ site.repository | prepend: 'https://github.com/' }}/discussions" target="_blank">Discussions</a></li>
+          <li><a href="{{ site.repository | prepend: 'https://github.com/' }}/issues" target="_blank">Issues</a></li>
+          <li><a href="{{ site.repository | prepend: 'https://github.com/' }}/blob/main/CONTRIBUTING.md" target="_blank">Contributing</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>License</h4>
+        <p>Licensed under <a href="{{ site.repository | prepend: 'https://github.com/' }}/blob/main/LICENSE" target="_blank">Apache 2.0</a></p>
+        <p class="built-with">Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a></p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} OSpec Community. Open source specification.</p>
+    </div>
+  </div>
+</footer>
