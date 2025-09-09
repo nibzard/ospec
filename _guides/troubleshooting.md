@@ -609,9 +609,9 @@ For enterprise customers:
 
 ## Next Steps
 
-- [Advanced Patterns →](/guides/advanced-patterns/)
-- [Security Best Practices →](/specification/security-guardrails/)
-- [Performance Optimization →](/cookbook/performance/)
+- [Advanced Patterns →]({{ 'guides/advanced-patterns/' | relative_url }})
+- [Security Best Practices →]({{ 'specification/security-guardrails/' | relative_url }})
+- [Performance Optimization →]({{ 'cookbook/performance/' | relative_url }})
 
 ---
 

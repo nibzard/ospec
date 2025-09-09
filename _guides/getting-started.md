@@ -196,10 +196,10 @@ stack:
 
 ## Next Steps
 
-- [Writing OSpecs →](/guides/writing-ospecs/)
-- [Stack Recommendations →](/guides/stacks/)
-- [Example: Shop Website →](/examples/shop-website/)
-- [Troubleshooting →](/cookbook/troubleshooting/)
+- [Writing OSpecs →]({{ 'guides/writing-ospecs/' | relative_url }})
+- [Stack Recommendations →]({{ 'guides/stacks/' | relative_url }})
+- [Example: Shop Website →]({{ 'examples/shop-website/' | relative_url }})
+- [Troubleshooting →]({{ 'cookbook/troubleshooting/' | relative_url }})
 
 ## Getting Help
 

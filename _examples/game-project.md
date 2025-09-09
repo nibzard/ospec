@@ -1330,9 +1330,9 @@ export class AchievementSystem {
 
 ## Related Examples
 
-- [API Service →](/examples/api-service/) - Game backend APIs
-- [Mobile App →](/examples/mobile-app/) - Mobile game development
-- [Real-time Chat →](/cookbook/patterns/) - WebSocket patterns
+- [API Service →]({{ 'examples/api-service/' | relative_url }}) - Game backend APIs
+- [Mobile App →]({{ 'examples/mobile-app/' | relative_url }}) - Mobile game development
+- [Real-time Chat →]({{ 'cookbook/patterns/' | relative_url }}) - WebSocket patterns
 
 ## Next Steps
 

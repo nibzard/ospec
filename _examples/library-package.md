@@ -485,9 +485,9 @@ describe('Performance Tests', () => {
 
 ## Related Examples
 
-- [API Service →](/examples/api-service/) - Backend API development
-- [CLI Tool →](/examples/cli-tool/) - Command-line utilities
-- [Mobile App →](/examples/mobile-app/) - React Native applications
+- [API Service →]({{ 'examples/api-service/' | relative_url }}) - Backend API development
+- [CLI Tool →]({{ 'examples/cli-tool/' | relative_url }}) - Command-line utilities
+- [Mobile App →]({{ 'examples/mobile-app/' | relative_url }}) - React Native applications
 
 ## Next Steps
 

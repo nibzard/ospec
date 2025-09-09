@@ -709,6 +709,6 @@ acceptance:
 
 ## Next Steps
 
-- [Testing Strategies →](/guides/testing-strategies/)
-- [Deployment Guide →](/guides/deployment/)
-- [Security & Guardrails →](/specification/security-guardrails/)
+- [Testing Strategies →]({{ 'guides/testing-strategies/' | relative_url }})
+- [Deployment Guide →]({{ 'guides/deployment/' | relative_url }})
+- [Security & Guardrails →]({{ 'specification/security-guardrails/' | relative_url }})

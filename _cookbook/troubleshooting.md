@@ -527,9 +527,9 @@ monitoring:
 ## Getting Help
 
 ### Documentation Links
-- [OSpec Troubleshooting](/guides/troubleshooting/)
-- [Agent Documentation](/specification/agents-roles/)
-- [Security Guide](/specification/security-guardrails/)
+- [OSpec Troubleshooting]({{ 'guides/troubleshooting/' | relative_url }})
+- [Agent Documentation]({{ 'specification/agents-roles/' | relative_url }})
+- [Security Guide]({{ 'specification/security-guardrails/' | relative_url }})
 
 ### Community Resources
 - **Discord**: [OSpec Community](https://discord.gg/ospec)

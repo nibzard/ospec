@@ -1340,9 +1340,9 @@ class CostOptimizer:
 
 ## Related Examples
 
-- [API Service →](/examples/api-service/) - Applications running on this infrastructure
-- [ML Pipeline →](/examples/ml-pipeline/) - ML workloads on Kubernetes
-- [Mobile App →](/examples/mobile-app/) - Mobile backend infrastructure
+- [API Service →]({{ 'examples/api-service/' | relative_url }}) - Applications running on this infrastructure
+- [ML Pipeline →]({{ 'examples/ml-pipeline/' | relative_url }}) - ML workloads on Kubernetes
+- [Mobile App →]({{ 'examples/mobile-app/' | relative_url }}) - Mobile backend infrastructure
 
 ## Next Steps
 

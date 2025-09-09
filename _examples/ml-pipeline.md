@@ -902,9 +902,9 @@ class ProductFeatureStore:
 
 ## Related Examples
 
-- [API Service →](/examples/api-service/) - Model serving APIs
-- [Infrastructure →](/specification/extensibility-plugins/) - ML infrastructure patterns
-- [Mobile App →](/examples/mobile-app/) - Edge ML deployment
+- [API Service →]({{ 'examples/api-service/' | relative_url }}) - Model serving APIs
+- [Infrastructure →]({{ 'specification/extensibility-plugins/' | relative_url }}) - ML infrastructure patterns
+- [Mobile App →]({{ 'examples/mobile-app/' | relative_url }}) - Edge ML deployment
 
 ## Next Steps
 

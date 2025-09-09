@@ -32,35 +32,35 @@ Explore real-world examples of OSpec specifications across different outcome typ
 ## Example Categories
 
 ### Web Applications
-- [Shop Website](/examples/shop-website/) - E-commerce site with authentication and payments
+- [Shop Website]({{ 'examples/shop-website/' | relative_url }}) - E-commerce site with authentication and payments
 - Examples of full-stack web applications with authentication, databases, and deployment
 
 ### APIs & Services  
-- [API Service](/examples/api-service/) - RESTful API with comprehensive features
+- [API Service]({{ 'examples/api-service/' | relative_url }}) - RESTful API with comprehensive features
 - RESTful and GraphQL APIs with proper documentation and testing
 
 ### CLI Tools
-- [CLI Tool](/examples/cli-tool/) - Command-line application with subcommands
+- [CLI Tool]({{ 'examples/cli-tool/' | relative_url }}) - Command-line application with subcommands
 - Command-line utilities and developer tools
 
 ### Mobile Applications
-- [Mobile App](/examples/mobile-app/) - React Native cross-platform app
+- [Mobile App]({{ 'examples/mobile-app/' | relative_url }}) - React Native cross-platform app
 - Native and cross-platform mobile development examples
 
 ### Games & Interactive
-- [2D Web Game](/examples/game-project/) - Multiplayer space shooter game
+- [2D Web Game]({{ 'examples/game-project/' | relative_url }}) - Multiplayer space shooter game
 - Interactive applications and real-time systems
 
 ### Libraries & Packages
-- [JavaScript Library](/examples/library-package/) - Reusable utility library
+- [JavaScript Library]({{ 'examples/library-package/' | relative_url }}) - Reusable utility library
 - Open source packages and reusable components
 
 ### Machine Learning
-- [ML Training Pipeline](/examples/ml-pipeline/) - End-to-end ML workflow
+- [ML Training Pipeline]({{ 'examples/ml-pipeline/' | relative_url }}) - End-to-end ML workflow
 - ML pipelines, data processing, and model deployment examples
 
 ### Infrastructure
-- [Cloud Infrastructure](/examples/infrastructure-project/) - Production-ready cloud setup
+- [Cloud Infrastructure]({{ 'examples/infrastructure-project/' | relative_url }}) - Production-ready cloud setup
 - Infrastructure as code and deployment automation
 
 ## Contributing Examples
@@ -74,6 +74,6 @@ Have an interesting OSpec example to share? We welcome contributions!
 
 ## Related Resources
 
-- [Getting Started Guide](/guides/getting-started/) - Learn OSpec basics
-- [OSpec Specification](/specification/) - Complete technical reference
-- [Cookbook](/cookbook/) - Common patterns and solutions
+- [Getting Started Guide]({{ 'guides/getting-started/' | relative_url }}) - Learn OSpec basics
+- [OSpec Specification]({{ 'specification/' | relative_url }}) - Complete technical reference
+- [Cookbook]({{ 'cookbook/' | relative_url }}) - Common patterns and solutions

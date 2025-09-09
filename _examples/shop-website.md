@@ -292,6 +292,6 @@ shop-website/
 
 ## Related Examples
 
-- [API Service →](/examples/api-service/)
-- [Mobile App →](/examples/mobile-app/)
-- [Admin Dashboard →](/examples/admin-dashboard/)
+- [API Service →]({{ 'examples/api-service/' | relative_url }})
+- [Mobile App →]({{ 'examples/mobile-app/' | relative_url }})
+- [Admin Dashboard →]({{ 'examples/admin-dashboard/' | relative_url }})
