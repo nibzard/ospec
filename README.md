@@ -1,11 +1,11 @@
 # OSpec - Build Products That Deliver Outcomes
 
-[![GitHub Pages](https://github.com/nibzard/ospec/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/nibzard/ospec/actions/workflows/pages/pages-build-deployment)
+[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/nibzard/ospec/actions/workflows/pages.yml/badge.svg)](https://github.com/nibzard/ospec/actions/workflows/pages.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 **The specification format for AI coding agents to build products with proven tech stacks.**
 
-OSpec is an outcome-driven specification that defines **what product to build** and **which tech stack to use**, allowing AI coding agents to scaffold, implement, and deploy projects with opinionated, battle-tested technology choices.
+💌 **A love letter to AI** - OSpec is an outcome-driven specification that defines **what product to build** and **which tech stack to use**, allowing AI coding agents to scaffold, implement, and deploy projects with opinionated, battle-tested technology choices.
 
 🌐 **Website**: [https://nibzard.github.io/ospec](https://nibzard.github.io/ospec)
 
