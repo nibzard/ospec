@@ -15,13 +15,13 @@
         {% else %}
           {% comment %} Try to find the collection or section name {% endcomment %}
           {% if part == 'specification' %}
-            <li><a href="/specification/">Specification</a></li>
+            <li><a href="{{ '/specification/' | relative_url }}">Specification</a></li>
           {% elsif part == 'guides' %}
-            <li><a href="/guides/">Guides</a></li>
+            <li><a href="{{ '/guides/' | relative_url }}">Guides</a></li>
           {% elsif part == 'examples' %}
-            <li><a href="/examples/">Examples</a></li>
+            <li><a href="{{ '/examples/' | relative_url }}">Examples</a></li>
           {% elsif part == 'cookbook' %}
-            <li><a href="/cookbook/">Cookbook</a></li>
+            <li><a href="{{ '/cookbook/' | relative_url }}">Cookbook</a></li>
           {% else %}
             <li><a href="{{ built_path | append: '/' | relative_url }}">{{ part | capitalize }}</a></li>
           {% endif %}
