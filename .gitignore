@@ -40,3 +40,34 @@ Thumbs.db
 # Generated files (Python legacy - now handled by Jekyll)
 sitemap.xml
 missing-pages.json
+
+# Development and testing tools
+.playwright-mcp/
+.playwright/
+playwright-report/
+test-results/
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Build artifacts and caches
+.cache/
+dist/
+build/
