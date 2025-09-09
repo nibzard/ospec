@@ -101,13 +101,13 @@ defaults:
 # Navigation
 navigation:
   - title: "Specification"
-    url: "/specification/"
+    url: "specification/"
   - title: "Guides"
-    url: "/guides/"
+    url: "guides/"
   - title: "Examples"
-    url: "/examples/"
+    url: "examples/"
   - title: "Cookbook"
-    url: "/cookbook/"
+    url: "cookbook/"
   - title: "GitHub"
     url: "https://github.com/nibzard/ospec"
 
