@@ -332,6 +332,6 @@ progress_report:
 
 ## Next Steps
 
-- [Security & Guardrails →](/specification/security-guardrails/)
-- [Agent Roles →](/specification/agents-roles/)
-- [Extensibility →](/specification/extensibility-plugins/)
+- [Security & Guardrails →]({{ 'specification/security-guardrails/' | relative_url }})
+- [Agent Roles →]({{ 'specification/agents-roles/' | relative_url }})
+- [Extensibility →]({{ 'specification/extensibility-plugins/' | relative_url }})

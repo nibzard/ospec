@@ -544,6 +544,6 @@ oauth:
 
 ## Next Steps
 
-- [Lifecycle Management →](/specification/lifecycle-management/)
-- [Extensibility →](/specification/extensibility-plugins/)
-- [Security & Guardrails →](/specification/security-guardrails/)
+- [Lifecycle Management →]({{ 'specification/lifecycle-management/' | relative_url }})
+- [Extensibility →]({{ 'specification/extensibility-plugins/' | relative_url }})
+- [Security & Guardrails →]({{ 'specification/security-guardrails/' | relative_url }})

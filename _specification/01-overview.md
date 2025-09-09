@@ -102,5 +102,5 @@ The `stack` section can specify preferences that eliminate micro-decisions:
 
 ## Next Steps
 
-- [Schema Reference →](/specification/schema/)
-- [Schema Validation →](/specification/validation/)
+- [Schema Reference →]({{ 'specification/schema/' | relative_url }})
+- [Schema Validation →]({{ 'specification/validation/' | relative_url }})
