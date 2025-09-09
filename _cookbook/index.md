@@ -47,17 +47,17 @@ Proven approaches for writing maintainable and effective specifications.
 ## Categories
 
 ### Patterns & Templates
-- [Common OSpec Patterns](/cookbook/patterns/) - Reusable patterns and best practices
+- [Common OSpec Patterns]({{ 'cookbook/patterns/' | relative_url }}) - Reusable patterns and best practices
 - Template starters for different outcome types
 - Component composition strategies
 
 ### Security & Guardrails
-- [Security Recipes](/cookbook/security-recipes/) - Security patterns and configurations
+- [Security Recipes]({{ 'cookbook/security-recipes/' | relative_url }}) - Security patterns and configurations
 - Authentication and authorization patterns
 - Dependency and license management
 
 ### Performance & Optimization
-- [Performance Optimization](/cookbook/performance-optimization/) - Techniques for optimizing performance
+- [Performance Optimization]({{ 'cookbook/performance-optimization/' | relative_url }}) - Techniques for optimizing performance
 - Caching strategies and patterns
 - Scalability and resource management
 
@@ -67,12 +67,12 @@ Proven approaches for writing maintainable and effective specifications.
 - Validation and quality assurance patterns
 
 ### Deployment & Operations
-- [Deployment Strategies](/cookbook/deployment-strategies/) - Proven deployment patterns
+- [Deployment Strategies]({{ 'cookbook/deployment-strategies/' | relative_url }}) - Proven deployment patterns
 - CI/CD patterns for OSpec projects
 - Integration with existing tools and workflows
 
 ### Troubleshooting & Support
-- [Troubleshooting Guide](/cookbook/troubleshooting/) - Common issues and solutions
+- [Troubleshooting Guide]({{ 'cookbook/troubleshooting/' | relative_url }}) - Common issues and solutions
 - Debugging techniques and tools
 - Performance monitoring and optimization
 
@@ -89,6 +89,6 @@ Help improve the cookbook by contributing your own patterns and solutions:
 
 ## Related Resources
 
-- [Guides](/guides/) - Step-by-step tutorials
-- [Examples](/examples/) - Complete example projects
-- [Specification](/specification/) - Technical reference
+- [Guides]({{ 'guides/' | relative_url }}) - Step-by-step tutorials
+- [Examples]({{ 'examples/' | relative_url }}) - Complete example projects
+- [Specification]({{ 'specification/' | relative_url }}) - Technical reference
