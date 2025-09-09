@@ -122,7 +122,7 @@ technology_stack:
   deployment: "Railway"
 ```
 
-[Get Started →](/guides/getting-started)
+[Get Started →]({{ 'guides/getting-started/' | relative_url }})
 
 ## Key Features
 
@@ -150,22 +150,22 @@ Share successful recipes, discover proven combinations, skip the research phase.
 
 <div class="grid">
   <div class="card">
-    <h3><a href="/specification/">📚 Read the Spec</a></h3>
+    <h3><a href="{{ 'specification/' | relative_url }}">📚 Read the Spec</a></h3>
     <p>Complete OSpec v1.0 specification with schema, lifecycle, and examples.</p>
   </div>
   
   <div class="card">
-    <h3><a href="/guides/">🚀 Guides</a></h3>
+    <h3><a href="{{ 'guides/' | relative_url }}">🚀 Guides</a></h3>
     <p>Step-by-step tutorials for writing OSpecs and building compatible agents.</p>
   </div>
   
   <div class="card">
-    <h3><a href="/examples/">💡 Examples</a></h3>
+    <h3><a href="{{ 'examples/' | relative_url }}">💡 Examples</a></h3>
     <p>Real-world OSpec examples from simple websites to ML pipelines.</p>
   </div>
   
   <div class="card">
-    <h3><a href="/cookbook/">📖 Cookbook</a></h3>
+    <h3><a href="{{ 'cookbook/' | relative_url }}">📖 Cookbook</a></h3>
     <p>Common patterns, troubleshooting tips, and best practices.</p>
   </div>
 </div>
