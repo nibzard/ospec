@@ -3,6 +3,8 @@ source "https://rubygems.org"
 # Core Jekyll
 gem "jekyll", "~> 4.3.0"
 gem "webrick", "~> 1.8"  # Required for Ruby 3.0+
+gem "csv", "~> 3.0"      # Required for Ruby 3.4+
+gem "base64", "~> 0.2"   # Required for Ruby 3.4+
 
 # Jekyll plugins
 group :jekyll_plugins do
