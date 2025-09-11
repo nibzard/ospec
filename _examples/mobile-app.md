@@ -379,6 +379,7 @@ CREATE INDEX idx_sync_queue_status ON sync_queue(attempts, created_at);
 ### Receipt Scanning with OCR
 
 ```tsx
+{% raw %}
 // src/components/camera/ReceiptScanner.tsx
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
@@ -545,6 +546,7 @@ export const ReceiptScanner: React.FC<ReceiptScannerProps> = ({
     </View>
   );
 };
+{% endraw %}
 ```
 
 ### Offline-First Data Management

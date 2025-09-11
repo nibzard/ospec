@@ -585,24 +585,24 @@ stack:
 # Adapt based on context
 stack:
   database: >
-    {{#if team_experience.postgresql}}
+    {% raw %}{{#if team_experience.postgresql}}
       "PostgreSQL"
     {{else if team_experience.mongodb}}
       "MongoDB"
     {{else}}
       "SQLite" 
-    {{/if}}
+    {{/if}}{% endraw %}
 
 acceptance:
   performance:
     response_time_ms: >
-      {{#if expected_users > 10000}}
+      {% raw %}{{#if expected_users > 10000}}
         50
       {{else if expected_users > 1000}}
         100
       {{else}}
         200
-      {{/if}}
+      {{/if}}{% endraw %}
 ```
 
 ### Environment-Specific Configuration

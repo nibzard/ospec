@@ -585,11 +585,11 @@ patterns:
     description: "Service layer with dependency injection"
     files:
       - template: "api_controller"
-        output: "src/controllers/{{snake_case entity_name}}_controller.ts"
+        output: "src/controllers/{% raw %}{{snake_case entity_name}}{% endraw %}_controller.ts"
       - template: "service_class"
-        output: "src/services/{{snake_case entity_name}}_service.ts"
+        output: "src/services/{% raw %}{{snake_case entity_name}}{% endraw %}_service.ts"
       - template: "repository_interface"
-        output: "src/repositories/{{snake_case entity_name}}_repository.ts"
+        output: "src/repositories/{% raw %}{{snake_case entity_name}}{% endraw %}_repository.ts"
 
 configuration:
   template_engine: "handlebars"

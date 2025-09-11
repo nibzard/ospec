@@ -22,7 +22,13 @@ Explore real-world examples of OSpec specifications across different outcome typ
       <div class="example-meta">
         {% if example.outcome_type %}<span class="outcome-type">{{ example.outcome_type }}</span>{% endif %}
         {% if example.complexity %}<span class="complexity {{ example.complexity }}">{{ example.complexity | capitalize }}</span>{% endif %}
-        {% if example.stack %}<span class="stack">{{ example.stack }}</span>{% endif %}
+        {% if example.stack %}
+          <div class="example-stack">
+            {% for tech in example.stack %}
+              <span class="stack-item">{{ tech[1] }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
     </div>
     {% endunless %}

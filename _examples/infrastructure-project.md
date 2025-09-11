@@ -901,7 +901,7 @@ prometheus:
             regex: true
 
 grafana:
-  adminPassword: "{{.Values.global.grafana.adminPassword}}"
+  adminPassword: "{% raw %}{{.Values.global.grafana.adminPassword}}{% endraw %}"
   
   persistence:
     enabled: true
@@ -1096,7 +1096,7 @@ jobs:
   terraform-plan:
     name: Terraform Plan
     runs-on: ubuntu-latest
-    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
+    environment: {% raw %}${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}{% endraw %}
     
     steps:
       - name: Checkout
@@ -1129,7 +1129,7 @@ jobs:
       - name: Terraform Plan
         run: |
           terraform plan \
-            -var-file="environments/${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}.tfvars" \
+            -var-file="environments/{% raw %}${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}{% endraw %}.tfvars" \
             -out=tfplan
         working-directory: terraform/
       

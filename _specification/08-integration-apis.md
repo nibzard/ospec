@@ -334,9 +334,9 @@ metadata:
           Outcome Type: {{ospec.outcome_type}}
           
           Acceptance Criteria:
-          {{#each ospec.acceptance}}
+          {% raw %}{{#each ospec.acceptance}}
           - {{this}}
-          {{/each}}
+          {{/each}}{% endraw %}
         
         labels: ["ospec", "{{ospec.outcome_type}}"]
         priority: "Medium"

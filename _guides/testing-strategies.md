@@ -738,7 +738,7 @@ scenarios:
       - post:
           url: "/auth/register"
           json:
-            email: "user{{ $randomNumber() }}@example.com"
+            email: "user{% raw %}{{ $randomNumber() }}{% endraw %}@example.com"
             password: "SecurePass123!"
             name: "Load Test User"
           capture:
@@ -758,7 +758,7 @@ scenarios:
           headers:
             Authorization: "Bearer {{ token }}"
       - get:
-          url: "/api/products/{{ $randomNumber(1, 100) }}"
+          url: "/api/products/{% raw %}{{ $randomNumber(1, 100) }}{% endraw %}"
           headers:
             Authorization: "Bearer {{ token }}"
       - post:
@@ -766,8 +766,8 @@ scenarios:
           headers:
             Authorization: "Bearer {{ token }}"
           json:
-            productId: "{{ $randomNumber(1, 100) }}"
-            quantity: "{{ $randomNumber(1, 3) }}"
+            productId: "{% raw %}{{ $randomNumber(1, 100) }}{% endraw %}"
+            quantity: "{% raw %}{{ $randomNumber(1, 3) }}{% endraw %}"
 ```
 
 ### Performance Test with K6
