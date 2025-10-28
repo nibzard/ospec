@@ -39,6 +39,13 @@ Explore real-world examples of OSpec specifications across different outcome typ
 
 ### Web Applications
 - [Shop Website]({{ 'examples/shop-website/' | relative_url }}) - E-commerce site with authentication and payments
+- [Field CRM (Marko)]({{ 'examples/field-crm-marko/' | relative_url }}) - Mobile-first CRM with streaming SSR and ultra-lean JavaScript
+- [Kanban for Teams (SolidStart)]({{ 'examples/kanban-solidstart/' | relative_url }}) - Real-time collaborative Kanban with tiny bundles and drag-and-drop
+- [SaaS Starter (SvelteKit)]({{ 'examples/saas-starter-sveltekit/' | relative_url }}) - Complete SaaS foundation with auth, billing, teams, and emails
+- [Realtime Whiteboard (Qwik City)]({{ 'examples/collab-whiteboard-qwik/' | relative_url }}) - Interactive whiteboard with instant TTI via resumability
+- [Enterprise Admin (Nuxt)]({{ 'examples/enterprise-admin-nuxt/' | relative_url }}) - Comprehensive admin portal with data grids and role-based access
+- [Docs Portal (Marko + HTMX)]({{ 'examples/docs-portal-marko-htmx/' | relative_url }}) - Lightning-fast docs with progressive enhancement
+- [Router-Centric App (TanStack + Solid)]({{ 'examples/router-app-tanstack-solid/' | relative_url }}) - Modern app with advanced data loading and route guards
 - Examples of full-stack web applications with authentication, databases, and deployment
 
 ### APIs & Services  
